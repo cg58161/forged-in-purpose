@@ -273,6 +273,82 @@
   position: relative;
   z-index: 2;
 }
+   .learn-more-section {
+  padding: 92px 22px;
+  background: #080808;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.learn-more-grid {
+  margin-top: 44px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.learn-more-card {
+  scroll-margin-top: 120px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border-radius: 30px;
+  padding: 32px;
+  transition: 0.25s ease;
+}
+
+.learn-more-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(245,158,11,0.45);
+}
+
+.learn-more-card h3 {
+  color: #f59e0b;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.learn-more-card h4 {
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 28px;
+  line-height: 1.1;
+  margin-bottom: 18px;
+}
+
+.learn-more-card p {
+  color: #d4d4d8;
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+.learn-more-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #a1a1aa;
+}
+
+.learn-more-card li {
+  margin-bottom: 10px;
+}
+
+.learn-more-card li::before {
+  content: "• ";
+  color: #f59e0b;
+  font-weight: 900;
+}
+
+.pillar-card {
+  display: block;
+}
+
+@media (max-width: 950px) {
+  .learn-more-grid {
+    grid-template-columns: 1fr;
+  }
+} 
   </style>
 </head>
 <body>
@@ -357,16 +433,101 @@
       <div class="container">
         <div class="section-title">The Method</div>
         <h2 class="headline">Built on four pillars.</h2>
-        <div class="card-grid">
-         <div class="pillar-card"><div class="icon">🏋️</div><h3>Training</h3><p>Workout plans focused on strength, muscle growth, fat loss, and building consistency in the gym.</p></div>
+      <div class="card-grid">
+  <a class="pillar-card" href="#training-details">
+    <div class="icon">🏋️</div>
+    <h3>Training</h3>
+    <p>Workout plans focused on strength, muscle growth, fat loss, and building consistency in the gym.</p>
+  </a>
 
-<div class="pillar-card"><div class="icon">🥗</div><h3>Nutrition</h3><p>Simple nutrition guidance focused on protein, meal structure, realistic habits, and fueling your goals.</p></div>
-<div class="pillar-card"><div class="icon">🌙</div><h3>Recovery</h3><p>Guidance on sleep, hydration, rest days, mobility, and habits that help your body rebuild stronger.</p></div>
-<div class="pillar-card"><div class="icon">✝</div><h3>Faith & Mindset</h3><p>Faith-based encouragement focused on discipline, stewardship, purpose, and staying committed when motivation fades.</p></div>
+  <a class="pillar-card" href="#nutrition-details">
+    <div class="icon">🥗</div>
+    <h3>Nutrition</h3>
+    <p>Simple nutrition guidance focused on protein, meal structure, realistic habits, and fueling your goals.</p>
+  </a>
+
+  <a class="pillar-card" href="#recovery-details">
+    <div class="icon">🌙</div>
+    <h3>Recovery</h3>
+    <p>Guidance on sleep, hydration, rest days, mobility, and habits that help your body rebuild stronger.</p>
+  </a>
+
+  <a class="pillar-card" href="#faith-details">
+    <div class="icon">✝</div>
+    <h3>Faith & Mindset</h3>
+    <p>Faith-based encouragement focused on discipline, stewardship, purpose, and staying committed when motivation fades.</p>
+  </a>
+</div>
         </div>
-      </div>
     </section>
+<section class="learn-more-section">
+  <div class="container">
+    <div class="section-title">Learn More</div>
+    <h2 class="headline">What to expect.</h2>
 
+    <div class="learn-more-grid">
+      <div class="learn-more-card" id="training-details">
+        <h3>Training</h3>
+        <h4>Stop guessing. Start training with structure.</h4>
+        <p>
+          Training is built around progression, consistency, and purpose. I help you understand what to train, how often to train, how many sets and reps to use, and how to build confidence in the gym.
+        </p>
+        <ul>
+          <li>Strength and muscle-building workouts</li>
+          <li>Fat loss-focused training structure</li>
+          <li>Beginner-friendly exercise options</li>
+          <li>Sets, reps, rest times, and weekly structure</li>
+          <li>Progressive overload guidance</li>
+        </ul>
+      </div>
+
+      <div class="learn-more-card" id="nutrition-details">
+        <h3>Nutrition</h3>
+        <h4>Fuel your body with intention.</h4>
+        <p>
+          Nutrition is not about extreme dieting. With my pharmacy school background, I hope to share my growing knowledge of health and wellness to help you build realistic habits, support your training, and achieve your nutrition goals.
+        </p>
+        <ul>
+          <li>Protein and meal structure guidance</li>
+          <li>Simple nutrition habits</li>
+          <li>Hydration and fueling strategies</li>
+          <li>Better food choices without overcomplicating it</li>
+          <li>Support for your fitness goals</li>
+        </ul>
+      </div>
+
+      <div class="learn-more-card" id="recovery-details">
+        <h3>Recovery</h3>
+        <h4>Growth happens when you recover.</h4>
+        <p>
+          Recovery is what allows your body to rebuild stronger. I help you focus on the habits that support progress outside the gym, including sleep, hydration, rest, mobility, and avoiding burnout.
+        </p>
+        <ul>
+          <li>Sleep and rest day habits</li>
+          <li>Hydration support</li>
+          <li>Mobility and stretching guidance</li>
+          <li>Soreness management</li>
+          <li>Burnout prevention</li>
+        </ul>
+      </div>
+
+      <div class="learn-more-card" id="faith-details">
+        <h3>Faith & Mindset</h3>
+        <h4>Build discipline through purpose.</h4>
+        <p>
+          Faith & Mindset is about becoming stronger beyond the body. Fitness can become a way to practice discipline, stewardship, humility, and consistency while growing into who God has called you to be.
+        </p>
+        <ul>
+          <li>Faith-based encouragement</li>
+          <li>Discipline and consistency</li>
+          <li>Stewardship of the body</li>
+          <li>Purpose-driven motivation</li>
+          <li>Mindset tools for staying committed</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
     <section id="training">
       <div class="container feature-grid">
         <div class="feature-card"><div class="section-title">Forged Standard</div><h3>Train With Purpose</h3><p>Training is more than movement. It is a daily commitment to becoming stronger, more disciplined, and more confident.</p></div>
