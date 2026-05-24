@@ -19,7 +19,7 @@
     }
     a { color: inherit; text-decoration: none; }
     .navbar {
-      position: fixed; top: 0; width: 100%; z-index: 100;
+      position: fixed; top: 0; width: 100%; z-index: 1000;
       background: rgba(0,0,0,0.78); backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
@@ -71,14 +71,19 @@
 
 /* MOVING BANNER */
 .moving-banner {
-  position: relative;
-  z-index: 9999;
+  position: fixed;
+  top: 78px;
+  left: 0;
   width: 100%;
+  z-index: 999;
   overflow: hidden;
   white-space: nowrap;
   background: #f59e0b;
   color: #080808;
-  border-top: 1px solid rgba(255,255,255,0.15);
+  border-bottom: 1px solid rgba(0,0,0,0.35);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+
 .moving-banner-track {
   display: inline-flex;
   align-items: center;
@@ -90,9 +95,6 @@
   text-transform: uppercase;
   letter-spacing: 1.6px;
   animation: bannerMove 18s linear infinite;
-}
-  letter-spacing: 1.6px;
-  animation: bannerMove 22s linear infinite;
 }
 
 .moving-banner-track span {
@@ -107,7 +109,6 @@
     transform: translateX(-50%);
   }
 }
-
 @media (max-width: 640px) {
   .moving-banner-track {
     padding: 8px 0;
@@ -118,7 +119,7 @@
 }
 
     .hero {
-      min-height: 100vh; padding: 140px 22px 80px; position: relative;
+      min-height: 100vh; padding: 180px 22px 80px; position: relative;
       display: flex; align-items: center; overflow: hidden;
       background:
         radial-gradient(circle at top right, rgba(245,158,11,0.18), transparent 35%),
