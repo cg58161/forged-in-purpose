@@ -71,22 +71,26 @@
 
 /* MOVING BANNER */
 .moving-banner {
+  position: relative;
+  z-index: 9999;
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
   background: #f59e0b;
   color: #080808;
-  border-bottom: 1px solid rgba(0,0,0,0.25);
-}
-
+  border-top: 1px solid rgba(255,255,255,0.15);
 .moving-banner-track {
   display: inline-flex;
   align-items: center;
   gap: 36px;
-  padding: 10px 0;
+  min-width: max-content;
+  padding: 11px 0;
   font-size: 12px;
   font-weight: 900;
   text-transform: uppercase;
+  letter-spacing: 1.6px;
+  animation: bannerMove 18s linear infinite;
+}
   letter-spacing: 1.6px;
   animation: bannerMove 22s linear infinite;
 }
