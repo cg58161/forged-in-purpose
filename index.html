@@ -63,6 +63,56 @@
     .btn-outline:hover {
       border-color: rgba(245,158,11,0.6); color: #f59e0b; transform: translateY(-2px);
     }
+    .btn-outline:hover {
+  border-color: rgba(245,158,11,0.6);
+  color: #f59e0b;
+  transform: translateY(-2px);
+}
+
+/* MOVING BANNER */
+.moving-banner {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  background: #f59e0b;
+  color: #080808;
+  border-bottom: 1px solid rgba(0,0,0,0.25);
+}
+
+.moving-banner-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 36px;
+  padding: 10px 0;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  animation: bannerMove 22s linear infinite;
+}
+
+.moving-banner-track span {
+  display: inline-block;
+}
+
+@keyframes bannerMove {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 640px) {
+  .moving-banner-track {
+    padding: 8px 0;
+    font-size: 10px;
+    gap: 24px;
+    animation-duration: 18s;
+  }
+}
+
     .hero {
       min-height: 100vh; padding: 140px 22px 80px; position: relative;
       display: flex; align-items: center; overflow: hidden;
@@ -375,7 +425,24 @@
   </header>
 
   <main>
-    <section class="hero" id="home">
+
+  <div class="moving-banner">
+    <div class="moving-banner-track">
+      <span>Faith. Fitness. Pharmacy.</span>
+      <span>Train With Purpose</span>
+      <span>Build Discipline</span>
+      <span>Nutrition Guidance</span>
+      <span>4-Week Plans Available</span>
+
+      <span>Faith. Fitness. Pharmacy.</span>
+      <span>Train With Purpose</span>
+      <span>Build Discipline</span>
+      <span>Nutrition Guidance</span>
+      <span>4-Week Plans Available</span>
+    </div>
+  </div>
+
+  <section class="hero" id="home">
       <video class="hero-video" autoplay muted loop playsinline preload="auto">
   <source src="hero-video.mp4" type="video/mp4">
 </video>
