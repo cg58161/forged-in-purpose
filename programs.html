@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Programs | Forged in Purpose Fit</title>
+<link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=League+Spartan:wght@700;800&display=swap)" rel="stylesheet">
+<style>
+:root{--bg:#0f1113;--surface:#15181b;--text:#fff;--muted:#b6bcc5;--gold:#d4af37;--border:rgba(255,255,255,0.08)}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6}
+.wrap{max-width:1200px;margin:0 auto;padding:56px 20px}
+h1,h2,h3{margin:0 0 12px}h1{font-family:"League Spartan";font-size:44px}
+h2{font-size:28px}.muted{color:var(--muted)}
+.header{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.4);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--border)}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:16px;max-width:1200px;margin:0 auto;padding:14px 20px}
+.menu a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px}
+.menu a.active,.menu a:hover{background:rgba(255,255,255,.06);color:var(--text)}
+.hero{border-bottom:1px solid var(--border);padding:32px 0}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 6px}
+.chip{padding:8px 12px;border-radius:999px;border:1px solid var(--border);color:var(--muted);cursor:pointer;user-select:none;background:var(--surface)}
+.chip[data-active="true"]{border-color:var(--gold);color:var(--text)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:18px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;display:flex;flex-direction:column}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 10px}
+.badge{font-size:12px;color:#111;background:var(--gold);padding:4px 8px;border-radius:999px;font-weight:700}
+.card ul{margin:6px 0 14px;padding-left:18px;color:var(--muted)}
+.btn{display:inline-block;text-decoration:none;font-weight:800;border-radius:10px;padding:12px 16px}
+.btn-primary{background:var(--gold);color:#111}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:8px}
+.cta-inline{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold)}
+.compare-bar{position:sticky;bottom:10px;left:0;right:0;display:none;justify-content:center}
+.compare-inner{background:#0b0c0e;border:1px solid var(--border);border-radius:12px;padding:10px 12px;display:flex;gap:10px;align-items:center}
+.compare-btn{background:var(--gold);color:#111;border:none;padding:10px 12px;border-radius:8px;font-weight:800;cursor:pointer}
+.checkbox{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:14px}
+hr.sep{border:0;border-top:1px solid var(--border);margin:28px 0}
+</style>
+</head>
+<body>
+<header class="header">
+  <nav class="nav">
+    <div style="font-family:'League Spartan';font-weight:800">Forged in Purpose Fit</div>
+    <div class="menu">
+      <a href="/">Home</a>
+      <a href="/the-standard">The Standard</a>
+      <a href="/training">Training</a>
+      <a href="/nutrition-pharmacy">Nutrition + Pharmacy</a>
+      <a href="/recovery">Recovery</a>
+      <a href="/faith-mindset">Faith & Mindset</a>
+      <a href="/programs" class="active" aria-current="page">Programs</a>
+      <a href="/contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<section class="wrap hero">
+  <h1>Find your program</h1>
+  <p class="muted">Filter by goal, experience, schedule, and equipment. Not sure? <a class="cta-inline" href="/quiz">Take the 60‑second quiz</a>.</p>
+
+  <div class="toolbar">
+    <div>
+      <strong>Goal:</strong>
+      <span class="chip" data-filter="goal:muscle">Build muscle</span>
+      <span class="chip" data-filter="goal:fatloss">Lose fat</span>
+      <span class="chip" data-filter="goal:recomp">Recomp</span>
+      <span class="chip" data-filter="goal:performance">Performance</span>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <div>
+      <strong>Experience:</strong>
+      <span class="chip" data-filter="xp:beginner">Beginner</span>
+      <span class="chip" data-filter="xp:intermediate">Intermediate</span>
+    </div>
+    <div>
+      <strong>Days/week:</strong>
+      <span class="chip" data-filter="days:3">3</span>
+      <span class="chip" data-filter="days:4">4</span>
+      <span class="chip" data-filter="days:5">5</span>
+    </div>
+    <div>
+      <strong>Equipment:</strong>
+      <span class="chip" data-filter="equip:gym">Gym</span>
+      <span class="chip" data-filter="equip:home">Home</span>
+    </div>
+  </div>
+
+  <hr class="sep">
+  <div id="programGrid" class="grid">
+    <!-- Starter -->
+    <article class="card" data-goal="muscle,recomp" data-xp="beginner" data-days="3,4" data-equip="gym,home">
+      <h3>Forged Starter Plan</h3>
+      <div class="badges">
+        <span class="badge">Beginner</span><span class="badge">3–4 days</span><span class="badge">Gym/Home</span>
+      </div>
+      <ul>
+        <li>12‑week PPL or Upper/Lower</li>
+        <li>Video demos + progressions</li>
+        <li>Grocery basics</li>
+      </ul>
+      <label class="checkbox"><input type="checkbox" class="cmp" value="starter"> Compare</label>
+      <a class="btn btn-primary" href="/starter">Start Starter Plan</a>
+    </article>
+
+    <!-- Transformation -->
+    <article class="card" data-goal="fatloss,recomp" data-xp="beginner,intermediate" data-days="3" data-equip="gym">
+      <h3>Transformation Plan</h3>
+      <div class="badges">
+        <span class="badge">Fat loss + strength</span><span class="badge">3 days</span>
+      </div>
+      <ul>
+        <li>8‑week 3‑day A/B split</li>
+        <li>Habit targets + check‑ins</li>
+        <li>Meal builder</li>
+      </ul>
+      <label class="checkbox"><input type="checkbox" class="cmp" value="transformation"> Compare</label>
+      <a class="btn btn-primary" href="/transformation">Join Transformation</a>
+    </article>
+
+    <!-- Purpose Membership -->
+    <article class="card" data-goal="muscle,recomp,performance" data-xp="beginner,intermediate" data-days="4,5" data-equip="gym">
+      <h3>Purpose Plan (Membership)</h3>
+      <div class="badges">
+        <span class="badge">Ongoing</span><span class="badge">4–5 days</span><span class="badge">Community</span>
+      </div>
+      <ul>
+        <li>Monthly programming</li>
+        <li>Weekly live Q&amp;A</li>
+        <li>Discipline framework</li>
+      </ul>
+      <label class="checkbox"><input type="checkbox" class="cmp" value="purpose"> Compare</label>
+      <a class="btn btn-primary" href="/membership">Start $1 Trial</a>
+    </article>
+
+    <!-- 1:1 Coaching -->
+    <article class="card" data-goal="muscle,fatloss,recomp,performance" data-xp="beginner,intermediate" data-days="custom" data-equip="gym,home">
+      <h3>1:1 Coaching</h3>
+      <div class="badges">
+        <span class="badge">Custom</span><span class="badge">Accountability</span>
+      </div>
+      <ul>
+        <li>Personalized programming</li>
+        <li>Weekly check‑ins</li>
+        <li>Form reviews</li>
+      </ul>
+      <label class="checkbox"><input type="checkbox" class="cmp" value="coaching"> Compare</label>
+      <a class="btn btn-primary" href="/coaching-apply">Apply for 1:1</a>
+    </article>
+  </div>
+</section>
+
+<!-- Compare bar -->
+<div id="compareBar" class="compare-bar">
+  <div class="compare-inner">
+    <span class="muted">Compare selected programs</span>
+    <button id="openCompare" class="compare-btn">Open compare</button>
+  </div>
+</div>
+
+<script>
+// Simple client-side filtering
+const chips = document.querySelectorAll('.chip');
+const cards = document.querySelectorAll('.card');
+const state = {goal:null,xp:null,days:null,equip:null};
+
+function applyFilters(){
+  cards.forEach(c=>{
+    const okGoal = !state.goal || c.dataset.goal.split(',').includes(state.goal);
+    const okXp = !state.xp || c.dataset.xp.split(',').includes(state.xp);
+    const okDays = !state.days || c.dataset.days.split(',').includes(state.days);
+    const okEquip = !state.equip || c.dataset.equip.split(',').includes(state.equip);
+    c.style.display = (okGoal && okXp && okDays && okEquip) ? '' : 'none';
+  });
+}
+
+chips.forEach(chip=>{
+  chip.addEventListener('click',()=>{
+    const [k,v] = chip.dataset.filter.split(':');
+    // toggle logic per facet: only one active per group
+    document.querySelectorAll(`.chip[data-filter^='${k}:']`).forEach(el=>el.dataset.active="false");
+    if(state[k]===v){ state[k]=null; chip.dataset.active="false"; }
+    else { state[k]=v; chip.dataset.active="true"; }
+    applyFilters();
+    const params = new URLSearchParams();
+    Object.entries(state).forEach(([k,v])=>{ if(v) params.set(k,v); });
+    history.replaceState(null,'',params.toString()?`?${params.toString()}`:location.pathname);
+  });
+});
+
+// Hydrate from URL
+const url = new URL(location.href);
+['goal','xp','days','equip'].forEach(k=>{
+  const v = url.searchParams.get(k);
+  if(v){ state[k]=v; const el = document.querySelector(`.chip[data-filter='${k}:${v}']`); if(el) el.dataset.active="true"; }
+});
+applyFilters();
+
+// Compare bar
+const cmp = document.querySelectorAll('.cmp');
+const bar = document.getElementById('compareBar');
+cmp.forEach(cb=>cb.addEventListener('change',()=>{
+  const any = Array.from(cmp).some(x=>x.checked);
+  bar.style.display = any ? 'flex' : 'none';
+}));
+
+document.getElementById('openCompare').addEventListener('click',()=>{
+  const selected = Array.from(cmp).filter(x=>x.checked).map(x=>x.value);
+  const qs = selected.map(x=>`id=${encodeURIComponent(x)}`).join('&');
+  window.location.href = `/compare?${qs}`;
+});
+</script>
+</body></html>
