@@ -80,15 +80,16 @@
 
 /* MOVING BANNER */
 .moving-banner {
-  position: fixed;
-  top: 78px;
+  position: relative;
+  top: auto;
   left: 0;
   width: 100%;
-  z-index: 999;
+  z-index: 5;
   overflow: hidden;
   white-space: nowrap;
   background: #f59e0b;
   color: #080808;
+  border-top: 1px solid rgba(0,0,0,0.35);
   border-bottom: 1px solid rgba(0,0,0,0.35);
   box-shadow: 0 8px 24px rgba(0,0,0,0.35);
 }
@@ -607,17 +608,18 @@ section {
   }
 
   .moving-banner {
-    top: 78px;
-    z-index: 998;
+    position: relative;
+    top: auto;
+    z-index: 5;
   }
 
   .moving-banner-track {
-    padding: 9px 0;
+    padding: 8px 0;
     font-size: 11px;
   }
 
   .hero {
-    padding-top: 170px;
+    padding-top: 145px;
   }
 
   .eyebrow {
@@ -650,7 +652,7 @@ section {
   }
 
   .hero {
-    padding-top: 178px;
+    padding-top: 150px;
   }
 }
 
@@ -682,21 +684,6 @@ section {
 
   <main>
 
-  <div class="moving-banner">
-    <div class="moving-banner-track">
-      <span>Faith. Fitness. Pharmacy.</span>
-      <span>Train With Purpose</span>
-      <span>Build Discipline</span>
-      <span>Nutrition Guidance</span>
-      <span>4-Week Plans Available</span>
-
-      <span>Faith. Fitness. Pharmacy.</span>
-      <span>Train With Purpose</span>
-      <span>Build Discipline</span>
-      <span>Nutrition Guidance</span>
-      <span>4-Week Plans Available</span>
-    </div>
-  </div>
 
   <section class="hero" id="home">
       <video class="hero-video" autoplay muted loop playsinline preload="auto">
@@ -726,6 +713,23 @@ section {
         </div>
       </div>
     </section>
+
+
+  <div class="moving-banner">
+    <div class="moving-banner-track">
+      <span>Faith. Fitness. Pharmacy.</span>
+      <span>Train With Purpose</span>
+      <span>Build Discipline</span>
+      <span>Nutrition Guidance</span>
+      <span>4-Week Plans Available</span>
+
+      <span>Faith. Fitness. Pharmacy.</span>
+      <span>Train With Purpose</span>
+      <span>Build Discipline</span>
+      <span>Nutrition Guidance</span>
+      <span>4-Week Plans Available</span>
+    </div>
+  </div>
 
 
     <section class="pillars">
