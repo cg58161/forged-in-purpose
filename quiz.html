@@ -31,7 +31,10 @@
     .btn-next { margin-top: 1.5rem; width: 100%; padding: 14px; background: #E8A020; color: #0e0e0e; font-size: 15px; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity .2s, transform .15s; letter-spacing: .02em; }
     .btn-next.visible { opacity: 1; pointer-events: all; }
     .btn-next:hover { transform: translateY(-2px); }
-    .fire-gif { width: 100%; border-radius: 10px; margin-bottom: 1.5rem; display: block; border: 1px solid #2a2a2a; }
+    .fire-banner { position: relative; width: 100%; height: 120px; border-radius: 10px; overflow: hidden; margin-bottom: 1.5rem; border: 1px solid #2a2a2a; background: #0b0b0b; display: flex; align-items: center; justify-content: center; }
+    .fire-banner::before { content:""; position: absolute; left:0; right:0; bottom:0; height: 60%; background: radial-gradient(120% 130% at 28% 130%, rgba(255,181,49,.95), rgba(255,181,49,0) 55%), radial-gradient(120% 130% at 74% 135%, rgba(255,106,0,.9), rgba(255,106,0,0) 55%), linear-gradient(0deg, #FFB531 0%, #FF6A00 42%, #C21807 72%, rgba(194,24,7,0) 100%); animation: flameWave 3s ease-in-out infinite; }
+    .fire-banner .fb-word { position: relative; z-index: 1; font-size: 22px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #fff; text-shadow: 0 2px 14px rgba(0,0,0,.7); }
+    @keyframes flameWave { 0%,100%{ transform: translateY(0) scaleY(1); opacity:.95; } 50%{ transform: translateY(-4px) scaleY(1.08); opacity:1; } }
     .result-badge { display: inline-block; background: #1c1600; border: 1px solid #3a2a00; border-radius: 100px; padding: 4px 14px; font-size: 12px; font-weight: 600; color: #E8A020; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 1rem; }
     .result-title { font-size: 22px; font-weight: 700; color: #f0ece4; margin-bottom: .75rem; line-height: 1.3; }
     .result-desc  { font-size: 15px; color: #888; line-height: 1.75; margin-bottom: 1.5rem; }
@@ -64,6 +67,7 @@
     .success-plan { display: block; padding: 13px; background: #161616; color: #E8A020; font-size: 14px; font-weight: 600; border-radius: 10px; text-decoration: none; text-align: center; border: 1px solid #2a2a2a; transition: border-color .2s, background .2s; animation: fadeUp .5s ease .52s both; }
     .success-plan:hover { border-color: #E8A020; background: #1c1600; }
     .embers { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+    #fx-canvas { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50; }
     .ember { position: absolute; bottom: 8px; width: 6px; height: 6px; border-radius: 50%; background: #E8A020; opacity: 0; filter: blur(.3px); animation: rise linear infinite; }
     @keyframes glowBreathe { 0%,100%{ opacity:.6; transform:translateX(-50%) scale(1);} 50%{ opacity:1; transform:translateX(-50%) scale(1.08);} }
     @keyframes badgePop { 0%{ opacity:0; transform:scale(.4);} 100%{ opacity:1; transform:scale(1);} }
@@ -81,6 +85,7 @@
   </style>
 </head>
 <body>
+<canvas id="fx-canvas"></canvas>
 <div class="quiz-wrap">
   <div class="brand">
     <div class="brand-tag">Forged in Purpose</div>
@@ -101,7 +106,7 @@
   </div>
 
   <div id="screen-result" class="screen">
-    <img src="FuelWithPurpose_FireCover.gif" alt="Fuel With Purpose" class="fire-gif" />
+    <div class="fire-banner"><span class="fb-word">Fuel With Purpose</span></div>
     <div class="result-badge" id="result-badge"></div>
     <p class="result-title" id="result-title"></p>
     <p class="result-desc" id="result-desc"></p>
@@ -276,12 +281,83 @@
     .then(function() {
       document.getElementById('screen-result').classList.remove('active');
       document.getElementById('screen-success').classList.add('active');
+      launchFireworks();
     })
     .catch(function(err) {
       console.error(err);
       btn.textContent = 'Send it to me'; btn.disabled = false;
       document.getElementById('error-msg').style.display = 'block';
     });
+  }
+
+  // ── Celebratory fireworks on success ───────────────────────────────────────
+  function launchFireworks() {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    var canvas = document.getElementById('fx-canvas');
+    if (!canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext('2d');
+    var W, H;
+    function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+    var colors = ['#E8A020', '#FFB531', '#FF6A00', '#FFD27A', '#ffffff'];
+    var particles = [];
+    function burst(x, y) {
+      var n = 70 + Math.floor(Math.random() * 30);
+      var base = colors[Math.floor(Math.random() * colors.length)];
+      for (var i = 0; i < n; i++) {
+        var a = (Math.PI * 2) * (i / n) + Math.random() * 0.2;
+        var sp = 2.5 + Math.random() * 6;
+        particles.push({
+          x: x, y: y, px: x, py: y,
+          vx: Math.cos(a) * sp, vy: Math.sin(a) * sp,
+          life: 1, decay: 0.009 + Math.random() * 0.012,
+          color: Math.random() < 0.75 ? base : colors[Math.floor(Math.random() * colors.length)],
+          size: 1.6 + Math.random() * 2
+        });
+      }
+    }
+    var shots = [
+      { t: 0,    x: 0.30, y: 0.32 },
+      { t: 250,  x: 0.70, y: 0.26 },
+      { t: 520,  x: 0.50, y: 0.40 },
+      { t: 820,  x: 0.36, y: 0.24 },
+      { t: 1120, x: 0.66, y: 0.38 },
+      { t: 1450, x: 0.50, y: 0.30 }
+    ];
+    shots.forEach(function(s){ setTimeout(function(){ burst(W * s.x, H * s.y); }, s.t); });
+    var start = Date.now(), raf;
+    function frame() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.globalCompositeOperation = 'lighter';
+      ctx.lineCap = 'round';
+      for (var i = particles.length - 1; i >= 0; i--) {
+        var p = particles[i];
+        p.px = p.x; p.py = p.y;
+        p.vy += 0.05;            // gravity
+        p.vx *= 0.985; p.vy *= 0.985;
+        p.x += p.vx; p.y += p.vy;
+        p.life -= p.decay;
+        if (p.life <= 0) { particles.splice(i, 1); continue; }
+        ctx.globalAlpha = Math.max(p.life, 0);
+        ctx.strokeStyle = p.color;
+        ctx.lineWidth = p.size;
+        ctx.beginPath();
+        ctx.moveTo(p.px, p.py);
+        ctx.lineTo(p.x, p.y);
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+      ctx.globalCompositeOperation = 'source-over';
+      if (Date.now() - start < 2100 || particles.length > 0) {
+        raf = requestAnimationFrame(frame);
+      } else {
+        ctx.clearRect(0, 0, W, H);
+        cancelAnimationFrame(raf);
+      }
+    }
+    frame();
   }
 
   renderQuestion();
