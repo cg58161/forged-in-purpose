@@ -111,7 +111,7 @@
       <p class="success-title">Check your inbox.</p>
       <p class="success-sub">Your free guide is on its way. Carlos reviews every submission personally and may follow up if he sees a fit.</p>
       <img src="FuelWithPurpose_FireCover.gif" alt="Fuel With Purpose" class="success-gif" />
-      <a href="FuelWithPurpose_NutritionGuide.pdf" download class="success-dl">↓ Download your guide now</a>
+      <a id="success-dl-link" href="FuelWithPurpose_NutritionGuide.pdf" download class="success-dl">↓ Download your guide now</a>
       <a id="success-plan-link" href="programs.html" class="success-plan">View your recommended plan →</a>
     </div>
   </div>
@@ -122,7 +122,7 @@
   var EMAILJS_PUBLIC_KEY  = 'qtcMmA3Z2LaJIQVWG';
   var EMAILJS_SERVICE_ID  = 'service_vx9smxe';
   var EMAILJS_TEMPLATE_ID = 'template_yl12bnh';
-  var SITE_URL            = 'https://forgedinpurposefit.com';
+  var SITE_URL            = 'https://purposerx.health';
   // ────────────────────────────────────────────────────────────────────────────
 
   emailjs.init(EMAILJS_PUBLIC_KEY);
@@ -150,24 +150,28 @@
 
   var results = {
     consistency: {
+      pdf: "FuelWithPurpose_Starter.pdf",
       badge: "Your gap: structure", title: "You don't need more motivation — you need a system.",
       desc: "Motivation fades. Discipline built on structure doesn't. The reason you keep falling off isn't a character flaw — it's the absence of a clear, repeatable plan.",
       planName: "Starter Plan — $30", planDesc: "A 4-week structured training plan with clear progressions. You'll always know exactly what to do and why.",
       emailMsg: "Your biggest gap right now is structure — not motivation. The Starter Plan gives you a clear 4-week system built to fix exactly that.", planUrl: "programs.html"
     },
     nutrition: {
+      pdf: "FuelWithPurpose_Transformation.pdf",
       badge: "Your gap: fuel", title: "Your fork is holding back your training.",
       desc: "You can train perfectly and still stall if nutrition is working against you. As a pharmacy student, Carlos understands how food interacts with your body at a level most coaches don't.",
       planName: "Transformation Plan — $40", planDesc: "Training plus full nutrition guidance — learn how to fuel your body with wisdom and consistency.",
       emailMsg: "Your biggest gap right now is nutrition. The Transformation Plan pairs your training with a full nutrition system built on real science — not guesswork.", planUrl: "programs.html"
     },
     recovery: {
+      pdf: "FuelWithPurpose_Purpose.pdf",
       badge: "Your gap: recovery", title: "You're breaking down faster than you're building up.",
       desc: "Hard training is only half the equation. If you're always sore or plateauing, the issue is almost always what happens outside the gym — sleep, stress, nutrition timing, and smart programming.",
       planName: "Purpose Plan — $60", planDesc: "The full system: training, nutrition, and recovery — built to help you rebuild sustainably long-term.",
       emailMsg: "Your biggest gap right now is recovery. The Purpose Plan includes a full recovery protocol — nutrition timing, sleep, and pharmacy-backed supplementation.", planUrl: "programs.html"
     },
     purpose: {
+      pdf: "FuelWithPurpose_Purpose.pdf",
       badge: "Your gap: mindset", title: "Your biggest gains start before you touch a weight.",
       desc: "Fitness without meaning becomes just another chore. The faith and mindset pillar at Forged in Purpose exists for this — helping you see your body as stewardship, not just a project.",
       planName: "Purpose Plan — $60", planDesc: "Training, nutrition, and faith-driven mindset tools — for people who want their fitness to mean something.",
@@ -236,6 +240,7 @@
     document.getElementById('error-msg').style.display = 'none';
     var r = results[topResult];
     document.getElementById('success-plan-link').href = r.planUrl;
+    document.getElementById('success-dl-link').href = r.pdf;
     emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
       to_email:       email,
       result_badge:   r.badge,
@@ -243,7 +248,7 @@
       result_message: r.emailMsg,
       plan_name:      r.planName,
       plan_link:      SITE_URL + '/' + r.planUrl,
-      pdf_link:       SITE_URL + '/FuelWithPurpose_NutritionGuide.pdf',
+      pdf_link:       SITE_URL + '/' + r.pdf,
     })
     .then(function() {
       document.getElementById('screen-result').classList.remove('active');
